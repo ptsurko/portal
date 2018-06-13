@@ -102,9 +102,9 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 
-console.log({"@ptportal/app-reports":"http://localhost:3001/bundle.js"});
+console.log({"@ptportal/app-reports":"http://ptsurko.github.io/portal/app-reports/bundle.js"});
 
-Object.entries({"@ptportal/app-reports":"http://localhost:3001/bundle.js"}).map(function (_ref) {
+Object.entries({"@ptportal/app-reports":"http://ptsurko.github.io/portal/app-reports/bundle.js"}).map(function (_ref) {
   var _ref2 = _slicedToArray(_ref, 2),
       appName = _ref2[0],
       url = _ref2[1];
