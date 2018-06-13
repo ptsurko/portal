@@ -1,0 +1,71 @@
+version: 2
+jobs:
+  build:
+    branches:
+      ignore:
+        - gh-pages
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          name: Install Dependencies
+          command: |
+            yarn config set cache-folder .yarn-cache
+            yarn install
+      - run: yarn cache dir
+      - run: yarn build
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - .yarn-cache
+
+      # run tests!
+      - run: yarn test
+
+      # deploy to gh-pages!
+      - deploy:
+          name: Deploy
+          command: sh ./scripts/deploy-ghpages.sh
+
+
+
+      # - restore_cache:
+      #     key: dependency-cache-{{ checksum "package.json" }}
+      # - run:
+      #     name: install-npm-wee
+      #     command: npm install
+      # - save_cache:
+      #     key: dependency-cache-{{ checksum "package.json" }}
+      #     paths:
+      #       - ./node_modules
+      # - run:
+      #     name: code-coverage
+      #     command: './node_modules/.bin/nyc report --reporter=text-lcov'
+      # - store_artifacts:
+      #     path: test-results.xml
+      #     prefix: tests
+      # - store_artifacts:
+      #     path: coverage
+      #     prefix: coverage
+      # - store_test_results:
+      #     path: test-results.xml
