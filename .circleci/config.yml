@@ -29,15 +29,13 @@ jobs:
           name: Install Dependencies
           command: |
             yarn config set cache-folder .yarn-cache
-            yarn install
-      - run: yarn cache dir
-      - run: yarn build
-
+            yarn bootstrap
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
             - .yarn-cache
+      - run: yarn build
 
       # run tests!
       - run: yarn test
