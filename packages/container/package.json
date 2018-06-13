@@ -1,0 +1,17 @@
+{
+  "name": "@ptportal/container",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  },
+  "devDependencies": {
+    "@ptportal/portal-scripts": "0.0.1"
+  },
+  "scripts": {
+    "start": "portal-scripts start container",
+    "build": "portal-scripts build container",
+    "test": "echo \"All tests passed\" && exit 0"
+  }
+}

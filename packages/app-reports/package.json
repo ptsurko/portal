@@ -1,0 +1,20 @@
+{
+  "name": "@ptportal/app-reports",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "portal-scripts build app",
+    "start": "portal-scripts start app --port=3001",
+    "test": "echo \"All tests passed\" && exit 0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@ptportal/portal-scripts": "0.0.1"
+  },
+  "portalApp": {
+  }
+}

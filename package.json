@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna exec --parallel --ignore @ptportal/portal-scripts -- yarn build",
+    "cleanup": "lerna exec --parallel -- rimraf dist node_modules",
+    "test": "lerna exec --parallel --ignore @ptportal/portal-scripts -- yarn test",
+    "validate:ci": "circleci config validate"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lerna": "^2.11.0",
+    "rimraf": "^2.6.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
